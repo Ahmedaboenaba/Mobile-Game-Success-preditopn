@@ -11,8 +11,9 @@ This project is a competitive machine learning solution designed to predict the 
 This solution utilizes **Advanced Feature Engineering**, **Hyperparameter Optimization (Optuna)**, and **Stacking Ensembles** to achieve high-performance results.
 
 ---
-## 📌 Competition link
-https://www.kaggle.com/competitions/predicting-mobile-game-success/data
+
+## 📌 Kaggle Competition
+https://www.kaggle.com/competitions/predicting-mobile-game-success/overview
 
 ## 📂 Dataset
 The dataset consists of mobile game metadata with the following key features:
@@ -57,3 +58,57 @@ Ensure you have Python installed. Install the required dependencies:
 
 ```bash
 pip install pandas numpy scikit-learn xgboost lightgbm optuna
+
+```
+
+### Project Structure
+
+This repository contains three main scripts to replicate the workflow:
+
+| Script Name | Description |
+| --- | --- |
+| **`1_tuner.py`** | Runs **Optuna** trials to find the best hyperparameters for XGBoost/LightGBM. |
+| **`2_engineer.py`** | Validates the impact of new features (Feature Engineering) using Cross-Validation. |
+| **`3_solver.py`** | Trains the final **Stacking Ensemble** and generates the `submission.csv` file. |
+
+### How to Run
+
+1. **Place Data:** Ensure `train.csv` and `test.csv` are in the root directory.
+2. **Tune Parameters:**
+```bash
+python 1_tuner.py
+
+```
+
+
+*Copy the printed "Best Params" dictionary.*
+3. **Generate Submission:**
+*Paste the params into `3_solver.py`.*
+```bash
+python 3_solver.py
+
+```
+
+
+
+---
+
+## 📊 Results
+
+| Model / Approach | RMSE Score | Notes |
+| --- | --- | --- |
+| **Baseline (Voting Regressor)** | 0.23695 | Default params, basic cleaning. |
+| **Tuned XGBoost** | 0.18472 | Manual tuning (LR=0.01). |
+| **Stacking + Feature Eng.** | **< 0.18000** | *Target Performance* (Current SOTA ~0.166). |
+
+---
+
+## 👤 Author
+
+**Ahmed Jaber** *Bioinformatics & Data Science Researcher* *Digital Egypt Builders Initiative (DEBI) Scholar*
+
+---
+
+```
+
+```
